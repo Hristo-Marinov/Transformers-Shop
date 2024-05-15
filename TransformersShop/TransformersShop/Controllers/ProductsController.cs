@@ -42,6 +42,30 @@ namespace TransformersShop.Controllers
 
             return View(products);
         }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var product = await _context.Products
+                .Include(p => p.ProductsInStock)
+                .Where(p => p.Id == id)
+                .Select(p => new ProductViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Picture = p.Picture,
+                    Description = p.Description,
+                    StockCount = p.ProductsInStock.Count,
+                    Rating = 5
+                })
+                .FirstOrDefaultAsync();
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
+        }
     }
 
 }
