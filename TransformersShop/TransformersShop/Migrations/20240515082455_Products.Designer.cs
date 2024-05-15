@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TransformersShop.Entity;
 
@@ -11,9 +12,10 @@ using TransformersShop.Entity;
 namespace TransformersShop.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240515082455_Products")]
+    partial class Products
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,7 +54,7 @@ namespace TransformersShop.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "0930d8a8-9d7a-407d-a83e-76193d2024a0",
+                            ConcurrencyStamp = "794d77e9-2d25-4899-bae1-062060ddf47b",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -243,14 +245,14 @@ namespace TransformersShop.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "75a4a177-63a0-4e0b-a6c8-8ce14e26451e",
+                            ConcurrencyStamp = "78496352-05db-4ee5-96e5-73038f10dc44",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             IsAdmin = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEECfh+a1KMDmiPF56FzeMfWr1yaSRok4lfvATs2pJvQ3qRH4Jj0SEp0C4iX4wPZViQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHaWoXGuFhtsvaSc9AQ1eO27v7O+mHzZHlMPwgFdBrjJQmFJZZ8kzAVsn2MlbQOgEg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -318,28 +320,28 @@ namespace TransformersShop.Migrations
                             Id = 1,
                             Description = "Description for Transformer 1",
                             Name = "Transformer 1",
-                            Picture = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9ece39f6-6737-42b8-b282-f99688062708/d6e4o93-ff76b235-071a-47e8-b3d0-9b02147fbd0c.jpg/v1/fill/w_525,h_350,q_70,strp/tf_fanart___autobots_vacation_ver2_by_goddessmechanic_d6e4o93-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTMzIiwicGF0aCI6IlwvZlwvOWVjZTM5ZjYtNjczNy00MmI4LWIyODItZjk5Njg4MDYyNzA4XC9kNmU0bzkzLWZmNzZiMjM1LTA3MWEtNDdlOC1iM2QwLTliMDIxNDdmYmQwYy5qcGciLCJ3aWR0aCI6Ijw9ODAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.vdyCpLE2-clAoreexFRcOwy12j2HnSDxKoenEOZltSQ"
+                            Picture = "C:\\Users\\Ico\\Documents\\GitHub\\Transformers-Shop\\TransformersShop\\TransformersShop\\Entity\\ProductPictures\\6b9683865dbd76069c6189d1dc7c2f5b.jpg"
                         },
                         new
                         {
                             Id = 2,
                             Description = "Description for Transformer 2",
                             Name = "Transformer 2",
-                            Picture = "https://media.tenor.com/r06Prd4E5i0AAAAe/transformers-funny.png"
+                            Picture = "C:\\Users\\Ico\\Documents\\GitHub\\Transformers-Shop\\TransformersShop\\TransformersShop\\Entity\\ProductPictures\\627de011e2153346c42f9b8189329821.jpg"
                         },
                         new
                         {
                             Id = 3,
                             Description = "Description for Transformer 3",
                             Name = "Transformer 3",
-                            Picture = "https://i.pinimg.com/736x/3e/87/a1/3e87a13aedb09fcaac9ce75b5ad93d27.jpg"
+                            Picture = "C:\\Users\\Ico\\Documents\\GitHub\\Transformers-Shop\\TransformersShop\\TransformersShop\\Entity\\ProductPictures\\download (1).jpg"
                         },
                         new
                         {
                             Id = 4,
                             Description = "Description for Transformer 4",
                             Name = "Transformer 4",
-                            Picture = "https://i.pinimg.com/736x/3e/87/a1/3e87a13aedb09fcaac9ce75b5ad93d27.jpg"
+                            Picture = "C:\\Users\\Ico\\Documents\\GitHub\\Transformers-Shop\\TransformersShop\\TransformersShop\\Entity\\ProductPictures\\maxresdefault.jpg"
                         });
                 });
 
