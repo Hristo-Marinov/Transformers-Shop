@@ -7,4 +7,5 @@ Here in the project we will make a shop based on the idea of selling Transformer
 2. Added Products to the Database
 3. Added Admin account
 4. Added Login/Register
+5. Added Cart/Checkout
 

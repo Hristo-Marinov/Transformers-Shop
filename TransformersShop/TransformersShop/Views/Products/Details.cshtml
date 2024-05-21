@@ -4,8 +4,6 @@
     ViewBag.Title = "Product Details";
 }
 
-
-
 <div class="container">
     <div class="row">
         <div class="col-md-6">
@@ -29,7 +27,15 @@
                     }
                 }
             </p>
-            <a href="@Url.Action("ProductList", "Products")" class="btn btn-primary">Back to List</a>
+            <form asp-action="AddToCart" asp-controller="Cart" method="post">
+                <input type="hidden" name="productId" value="@Model.Id" />
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" name="quantity" value="1" min="1" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-primary">Add to Cart</button>
+            </form>
+            <a href="@Url.Action("ProductList", "Products")" class="btn btn-secondary mt-2">Back to List</a>
         </div>
     </div>
 </div>
