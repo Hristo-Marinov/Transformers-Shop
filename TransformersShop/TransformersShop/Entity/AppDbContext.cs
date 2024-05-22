@@ -9,7 +9,6 @@ namespace TransformersShop.Entity
     public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Product> Products { get; set; }
-        public DbSet<ProductsInStock> ProductsInStock { get; set; }
         public DbSet<Cart> Carts { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
@@ -17,11 +16,6 @@ namespace TransformersShop.Entity
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<Product>()
-                .HasOne(p => p.ProductsInStock)
-                .WithOne(ps => ps.Product)
-                .HasForeignKey<ProductsInStock>(ps => ps.ProductId);
 
             modelBuilder.Entity<Cart>()
                 .HasOne(c => c.User)
@@ -73,18 +67,12 @@ namespace TransformersShop.Entity
         private void SeedProducts(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>().HasData(
-                new Product { Id = 1, Name = "Transformer 1", Picture = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9ece39f6-6737-42b8-b282-f99688062708/d6e4o93-ff76b235-071a-47e8-b3d0-9b02147fbd0c.jpg/v1/fill/w_525,h_350,q_70,strp/tf_fanart___autobots_vacation_ver2_by_goddessmechanic_d6e4o93-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTMzIiwicGF0aCI6IlwvZlwvOWVjZTM5ZjYtNjczNy00MmI4LWIyODItZjk5Njg4MDYyNzA4XC9kNmU0bzkzLWZmNzZiMjM1LTA3MWEtNDdlOC1iM2QwLTliMDIxNDdmYmQwYy5qcGciLCJ3aWR0aCI6Ijw9ODAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.vdyCpLE2-clAoreexFRcOwy12j2HnSDxKoenEOZltSQ", Description = "Description for Transformer 1" },
-                new Product { Id = 2, Name = "Transformer 2", Picture = "https://media.tenor.com/r06Prd4E5i0AAAAe/transformers-funny.png", Description = "Description for Transformer 2" },
-                new Product { Id = 3, Name = "Transformer 3", Picture = "https://i.pinimg.com/736x/3e/87/a1/3e87a13aedb09fcaac9ce75b5ad93d27.jpg", Description = "Description for Transformer 3" },
-                new Product { Id = 4, Name = "Transformer 4", Picture = "https://i.pinimg.com/originals/9f/bf/05/9fbf05e55cabc5e5ba61e5df243561d5.gif", Description = "Description for Transformer 4" }
+                new Product { Id = 1, Name = "Transformer 1", Picture = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9ece39f6-6737-42b8-b282-f99688062708/d6e4o93-ff76b235-071a-47e8-b3d0-9b02147fbd0c.jpg/v1/fill/w_525,h_350,q_70,strp/tf_fanart___autobots_vacation_ver2_by_goddessmechanic_d6e4o93-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTMzIiwicGF0aCI6IlwvZlwvOWVjZTM5ZjYtNjczNy00MmI4LWIyODItZjk5Njg4MDYyNzA4XC9kNmU0bzkzLWZmNzZiMjM1LTA3MWEtNDdlOC1iM2QwLTliMDIxNDdmYmQwYy5qcGciLCJ3aWR0aCI6Ijw9ODAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.vdyCpLE2-clAoreexFRcOwy12j2HnSDxKoenEOZltSQ", Description = "Description for Transformer 1", StockCount = 10 },
+                new Product { Id = 2, Name = "Transformer 2", Picture = "https://media.tenor.com/r06Prd4E5i0AAAAe/transformers-funny.png", Description = "Description for Transformer 2", StockCount = 10 },
+                new Product { Id = 3, Name = "Transformer 3", Picture = "https://i.pinimg.com/736x/3e/87/a1/3e87a13aedb09fcaac9ce75b5ad93d27.jpg", Description = "Description for Transformer 3", StockCount = 10 },
+                new Product { Id = 4, Name = "Transformer 4", Picture = "https://i.pinimg.com/originals/9f/bf/05/9fbf05e55cabc5e5ba61e5df243561d5.gif", Description = "Description for Transformer 4", StockCount = 10 }
             );
 
-            modelBuilder.Entity<ProductsInStock>().HasData(
-                new ProductsInStock { ProductId = 1, Count = 10 },
-                new ProductsInStock { ProductId = 2, Count = 10 },
-                new ProductsInStock { ProductId = 3, Count = 10 },
-                new ProductsInStock { ProductId = 4, Count = 10 }
-            );
         }
     }
 }

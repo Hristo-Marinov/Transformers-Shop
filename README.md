@@ -9,4 +9,7 @@ Here in the project we will make a shop based on the idea of selling Transformer
 3. Added Admin account
 4. Added Login/Register
 5. Added Cart/Checkout
+6. Added Admin Panel
+    6.1 Deliver Panel
+    6.2 Restock Panel
 

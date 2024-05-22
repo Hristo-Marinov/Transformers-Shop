@@ -21,14 +21,13 @@ namespace TransformersShop.Controllers
         public async Task<IActionResult> ProductList(int page = 1, int pageSize = 6)
         {
             var products = await _context.Products
-                .Include(p => p.ProductsInStock)
                 .Select(p => new ProductViewModel
                 {
                     Id = p.Id,
                     Name = p.Name,
                     Picture = p.Picture,
                     Description = p.Description,
-                    StockCount = p.ProductsInStock.Count,
+                    StockCount = p.StockCount,
                     Rating = 5
                 })
                 .Skip((page - 1) * pageSize)
@@ -46,7 +45,6 @@ namespace TransformersShop.Controllers
         public async Task<IActionResult> Details(int id)
         {
             var product = await _context.Products
-                .Include(p => p.ProductsInStock)
                 .Where(p => p.Id == id)
                 .Select(p => new ProductViewModel
                 {
@@ -54,7 +52,7 @@ namespace TransformersShop.Controllers
                     Name = p.Name,
                     Picture = p.Picture,
                     Description = p.Description,
-                    StockCount = p.ProductsInStock.Count,
+                    StockCount = p.StockCount,
                     Rating = 5
                 })
                 .FirstOrDefaultAsync();

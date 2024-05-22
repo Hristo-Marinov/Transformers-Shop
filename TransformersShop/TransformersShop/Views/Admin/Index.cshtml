@@ -1,0 +1,38 @@
+﻿@model IEnumerable<TransformersShop.Models.OrderViewModel>
+
+@{
+    ViewBag.Title = "Admin Panel";
+}
+
+<h2>Admin Panel</h2>
+
+<a asp-action="Restock" class="btn btn-secondary mb-3">Restock Products</a>
+
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.UserName</td>
+                <td>@order.ProductName</td>
+                <td>@order.Quantity</td>
+                <td>@order.Status</td>
+                <td>
+                    <form asp-action="Deliver" method="post" style="display:inline">
+                        <input type="hidden" name="id" value="@order.Id" />
+                        <button type="submit" class="btn btn-success">Deliver</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

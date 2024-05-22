@@ -219,17 +219,39 @@ namespace TransformersShop.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1", "ea4416cb-abc0-4d19-b4bd-68028e82a15e", "Admin", "ADMIN" });
+                values: new object[] { "1", "e5200be1-6fa2-4441-908d-5ea78ccbed03", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "IsAdmin", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "1", 0, "833bf7e8-a314-4c2b-a0af-3c5d275b67c1", "admin@admin.com", true, true, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEEm5Z6JYMlnla28V+ufSkjJExf3jV9r4uucEAUDJgCmzD93Pyda/Y0nRpbk4RLFMdw==", null, false, "", false, "admin@admin.com" });
+                values: new object[] { "1", 0, "113c23b9-c018-491b-b46e-cc8438633ab8", "admin@admin.com", true, true, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEMeXHPbcSl6LUjyTpKyxNxvk9bDuAbfREspdenXzbCa+zGaZBs982MhAaTHZcDyxxA==", null, false, "", false, "admin@admin.com" });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "Description", "Name", "Picture" },
+                values: new object[,]
+                {
+                    { 1, "Description for Transformer 1", "Transformer 1", "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9ece39f6-6737-42b8-b282-f99688062708/d6e4o93-ff76b235-071a-47e8-b3d0-9b02147fbd0c.jpg/v1/fill/w_525,h_350,q_70,strp/tf_fanart___autobots_vacation_ver2_by_goddessmechanic_d6e4o93-350t.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTMzIiwicGF0aCI6IlwvZlwvOWVjZTM5ZjYtNjczNy00MmI4LWIyODItZjk5Njg4MDYyNzA4XC9kNmU0bzkzLWZmNzZiMjM1LTA3MWEtNDdlOC1iM2QwLTliMDIxNDdmYmQwYy5qcGciLCJ3aWR0aCI6Ijw9ODAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.vdyCpLE2-clAoreexFRcOwy12j2HnSDxKoenEOZltSQ" },
+                    { 2, "Description for Transformer 2", "Transformer 2", "https://media.tenor.com/r06Prd4E5i0AAAAe/transformers-funny.png" },
+                    { 3, "Description for Transformer 3", "Transformer 3", "https://i.pinimg.com/736x/3e/87/a1/3e87a13aedb09fcaac9ce75b5ad93d27.jpg" },
+                    { 4, "Description for Transformer 4", "Transformer 4", "https://i.pinimg.com/originals/9f/bf/05/9fbf05e55cabc5e5ba61e5df243561d5.gif" }
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[] { "1", "1" });
+
+            migrationBuilder.InsertData(
+                table: "ProductsInStock",
+                columns: new[] { "ProductId", "Count" },
+                values: new object[,]
+                {
+                    { 1, 10 },
+                    { 2, 10 },
+                    { 3, 10 },
+                    { 4, 10 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

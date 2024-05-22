@@ -12,8 +12,8 @@ using TransformersShop.Entity;
 namespace TransformersShop.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240515083855_fix")]
-    partial class fix
+    [Migration("20240522072008_First")]
+    partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,7 +54,7 @@ namespace TransformersShop.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "46b76f0e-e0c5-46a1-8690-257a13956ead",
+                            ConcurrencyStamp = "e5200be1-6fa2-4441-908d-5ea78ccbed03",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -245,14 +245,14 @@ namespace TransformersShop.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5a245625-258b-4998-b968-e50cbd00412e",
+                            ConcurrencyStamp = "113c23b9-c018-491b-b46e-cc8438633ab8",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             IsAdmin = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEEOaGKUxekvDRV1mgd2BMEj9CMELWj6fYBmpRPbdZ7S0OvY9UYW/6deaIri37Kopg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMeXHPbcSl6LUjyTpKyxNxvk9bDuAbfREspdenXzbCa+zGaZBs982MhAaTHZcDyxxA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -327,21 +327,21 @@ namespace TransformersShop.Migrations
                             Id = 2,
                             Description = "Description for Transformer 2",
                             Name = "Transformer 2",
-                            Picture = "C:\\Users\\Ico\\Documents\\GitHub\\Transformers-Shop\\TransformersShop\\TransformersShop\\Entity\\ProductPictures\\627de011e2153346c42f9b8189329821.jpg"
+                            Picture = "https://media.tenor.com/r06Prd4E5i0AAAAe/transformers-funny.png"
                         },
                         new
                         {
                             Id = 3,
                             Description = "Description for Transformer 3",
                             Name = "Transformer 3",
-                            Picture = "C:\\Users\\Ico\\Documents\\GitHub\\Transformers-Shop\\TransformersShop\\TransformersShop\\Entity\\ProductPictures\\download (1).jpg"
+                            Picture = "https://i.pinimg.com/736x/3e/87/a1/3e87a13aedb09fcaac9ce75b5ad93d27.jpg"
                         },
                         new
                         {
                             Id = 4,
                             Description = "Description for Transformer 4",
                             Name = "Transformer 4",
-                            Picture = "C:\\Users\\Ico\\Documents\\GitHub\\Transformers-Shop\\TransformersShop\\TransformersShop\\Entity\\ProductPictures\\maxresdefault.jpg"
+                            Picture = "https://i.pinimg.com/originals/9f/bf/05/9fbf05e55cabc5e5ba61e5df243561d5.gif"
                         });
                 });
 
