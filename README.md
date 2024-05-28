@@ -14,4 +14,5 @@ Here in the project we will make a shop based on the idea of selling Transformer
     6.1 Deliver Panel
    
     6.2 Restock Panel
+7. Added Category for the Products
 

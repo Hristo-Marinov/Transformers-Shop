@@ -1,12 +1,12 @@
-﻿@model IEnumerable<ProductViewModel>
+﻿@model IEnumerable<TransformersShop.Models.ProductViewModel>
 
 @{
     ViewBag.Title = "Products";
 }
 
-
-
 <div class="container">
+    @Html.Partial("_CategoryFilter", ViewBag.Categories as IEnumerable<TransformersShop.Entity.Category>)
+
     <div class="row">
         @foreach (var product in Model)
         {
@@ -41,7 +41,7 @@
             @for (int i = 1; i <= ViewBag.TotalPages; i++)
             {
                 <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
-                    <a class="page-link" href="@Url.Action("ProductList", new { page = i })">@i</a>
+                    <a class="page-link" href="@Url.Action("ProductList", new { page = i, categoryId = ViewBag.SelectedCategoryId })">@i</a>
                 </li>
             }
         </ul>

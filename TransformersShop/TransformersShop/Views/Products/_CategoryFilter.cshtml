@@ -1,0 +1,14 @@
+﻿@model IEnumerable<TransformersShop.Entity.Category>
+
+<form asp-action="ProductList" method="get">
+    <div class="form-group">
+        <label for="categorySelect">Select Category</label>
+        <select id="categorySelect" name="categoryId" class="form-control" onchange="this.form.submit();">
+            <option value="">All Categories</option>
+            @foreach (var category in Model)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select>
+    </div>
+</form>

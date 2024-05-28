@@ -18,28 +18,35 @@ namespace TransformersShop.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> ProductList(int page = 1, int pageSize = 6)
+        public async Task<IActionResult> ProductList(int? categoryId, int page = 1, int pageSize = 10)
         {
-            var products = await _context.Products
+            var categories = await _context.Categories.ToListAsync();
+            ViewBag.Categories = categories;
+
+            var products = _context.Products.Include(p => p.Category).AsQueryable();
+
+            if (categoryId.HasValue)
+            {
+                products = products.Where(p => p.CategoryId == categoryId.Value);
+            }
+
+            var productViewModels = await products
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .Select(p => new ProductViewModel
                 {
                     Id = p.Id,
                     Name = p.Name,
-                    Picture = p.Picture,
                     Description = p.Description,
+                    Picture = p.Picture,
                     StockCount = p.StockCount,
-                    Rating = 5
-                })
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
+                    CategoryName = p.Category.Name,
+                }).ToListAsync();
 
-            var totalProducts = await _context.Products.CountAsync();
-
+            ViewBag.TotalPages = (int)Math.Ceiling(products.Count() / (double)pageSize);
             ViewBag.CurrentPage = page;
-            ViewBag.TotalPages = (int)Math.Ceiling(totalProducts / (double)pageSize);
 
-            return View(products);
+            return View(productViewModels);
         }
 
         public async Task<IActionResult> Details(int id)
@@ -53,7 +60,8 @@ namespace TransformersShop.Controllers
                     Picture = p.Picture,
                     Description = p.Description,
                     StockCount = p.StockCount,
-                    Rating = 5
+                    Rating = 5,
+                    CategoryName = p.Category.Name
                 })
                 .FirstOrDefaultAsync();
 
