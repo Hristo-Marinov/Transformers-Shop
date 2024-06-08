@@ -4,81 +4,44 @@
     ViewBag.Title = Model.Name;
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <img src="@Model.Picture" class="img-fluid" alt="@Model.Name" />
-            <div class="col-ml-6">
-                <h2>@Model.Name</h2>
-                <p>@Model.Description</p>
-                <p>Category: @Model.CategoryName</p>
-                <p>Stock Count: @Model.StockCount</p>
-            </div>
-            <p>
-                Average Rating:
-                @for (int i = 0; i < 5; i++)
-                {
-                    if (i < Model.Rating)
-                    {
-                        <span class="fa fa-star checked"></span>
-                    }
-                    else
-                    {
-                        <span class="fa fa-star"></span>
-                    }
-                }
-                (@Model.Rating)
-            </p>
+<h1>@Model.Name</h1>
+<img src="@Model.Picture" alt="@Model.Name" />
+<p>@Model.Description</p>
+<p>Stock Count: @Model.StockCount</p>
+<p>Category: @Model.CategoryName</p>
 
-            <h3>Ratings</h3>
-            <div>
-                @foreach (var rating in Model.Ratings)
-                {
-                    <div class="rating">
-                        <p>
-                            @for (int i = 0; i < 5; i++)
-                            {
-                                if (i < rating.Stars)
-                                {
-                                    <span class="fa fa-star checked"></span>
-                                }
-                                else
-                                {
-                                    <span class="fa fa-star"></span>
-                                }
-                            }
-                            - @rating.Comment
-                        </p>
-                        <p>by @rating.UserName on @rating.Date.ToShortDateString()</p>
-                    </div>
-                }
-            </div>
-
-            <h3>Leave a Rating</h3>
-            <form asp-action="SubmitRating" method="post">
-                <input type="hidden" name="productId" value="@Model.Id" />
-                <div class="form-group">
-                    <label for="stars">Stars</label>
-                    <select id="stars" name="stars" class="form-control" required>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="comment">Comment</label>
-                    <textarea id="comment" name="comment" class="form-control" rows="3" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
+<h2>Ratings</h2>
+@foreach (var rating in Model.Ratings)
+{
+    <div>
+        <p>@rating.Stars stars</p>
+        <p>@rating.Comment</p>
+        <p>by @rating.UserName on @rating.Date.ToShortDateString()</p>
     </div>
-</div>
+}
 
-<style>
-    .checked {
-        color: orange;
-    }
-</style>
+<h2>Leave a Rating</h2>
+<form asp-action="SubmitRating" method="post">
+    <input type="hidden" name="productId" value="@Model.Id" />
+    <div class="form-group">
+        <label for="stars">Stars</label>
+        <select id="stars" name="stars" class="form-control" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="comment">Comment</label>
+        <textarea id="comment" name="comment" class="form-control" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<h2>Add to Cart</h2>
+<form asp-action="AddToCart" method="post">
+    <input type="hidden" name="productId" value="@Model.Id" />
+    <button type="submit" class="btn btn-success">Add to Cart</button>
+</form>

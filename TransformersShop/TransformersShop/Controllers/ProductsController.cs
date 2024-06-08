@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TransformersShop.Entity;
 using TransformersShop.Models;
 
-namespace Tra.Controllers
+namespace TransformersShop.Controllers
 {
     public class ProductsController : Controller
     {
@@ -103,6 +103,30 @@ namespace Tra.Controllers
             };
 
             _context.Ratings.Add(rating);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Details", new { id = productId });
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> AddToCart(int productId)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+
+            var cartItem = new Cart
+            {
+                ProductId = productId,
+                UserId = user.Id,
+                Quantity = 1,
+                IsAccepted = false
+            };
+
+            _context.Carts.Add(cartItem);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Details", new { id = productId });
