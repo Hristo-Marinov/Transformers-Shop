@@ -90,6 +90,7 @@ namespace TransformersShop.Controllers
             }
 
             await _context.SaveChangesAsync();
+            TempData["CheckoutSuccess"] = "Checkout completed successfully!";
             return RedirectToAction("Index");
         }
     }

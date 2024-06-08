@@ -4,21 +4,55 @@
     ViewBag.Title = Model.Name;
 }
 
-<h1>@Model.Name</h1>
-<img src="@Model.Picture" alt="@Model.Name" />
-<p>@Model.Description</p>
-<p>Stock Count: @Model.StockCount</p>
-<p>Category: @Model.CategoryName</p>
-
-<h2>Ratings</h2>
-@foreach (var rating in Model.Ratings)
-{
-    <div>
-        <p>@rating.Stars stars</p>
-        <p>@rating.Comment</p>
-        <p>by @rating.UserName on @rating.Date.ToShortDateString()</p>
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+        <div class="card mb-4 shadow-sm">
+            <img src="@Model.Picture" class="card-img-top" alt="@Model.Name">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Name</h5>
+                <p class="card-text">@Model.Description</p>
+                <p class="card-text"><strong>Stock Count:</strong> @Model.StockCount</p>
+                <p class="card-text"><strong>Category:</strong> @Model.CategoryName</p>
+                 <p>
+                Rating:
+                Average Rating:
+                @for (int i = 0; i < 5; i++)
+                {
+                    if (i < Model.Rating)
+                    {
+                        <span class="fa fa-star"></span>
+                    }
+                }
+                (@Model.Rating)
+            </p>
+            </div>
+        </div>
     </div>
-}
+</div>
+
+<h3>Ratings</h3>
+<div>
+    @foreach (var rating in Model.Ratings)
+    {
+        <div class="rating">
+            <p>
+                @for (int i = 0; i < 5; i++)
+                {
+                    if (i < rating.Stars)
+                    {
+                        <span class="fa fa-star checked"></span>
+                    }
+                    else
+                    {
+                        <span class="fa fa-star"></span>
+                    }
+                }
+                - @rating.Comment
+            </p>
+            <p>by @rating.UserName on @rating.Date.ToShortDateString()</p>
+        </div>
+    }
+</div>
 
 <h2>Leave a Rating</h2>
 <form asp-action="SubmitRating" method="post">

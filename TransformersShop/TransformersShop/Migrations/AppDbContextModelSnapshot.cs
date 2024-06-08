@@ -52,7 +52,7 @@ namespace TransformersShop.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "83268ed9-53aa-492a-9fe0-5dcec60f8868",
+                            ConcurrencyStamp = "31e574dd-4188-41e2-abbf-b460e44e12f4",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -243,14 +243,14 @@ namespace TransformersShop.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bd5fedf4-e54c-4643-969c-c4c1279ff1f1",
+                            ConcurrencyStamp = "49080b32-597e-4edd-9835-7421c2966df7",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             IsAdmin = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKXx/zxDssTF7zYBuv4NHTlQ0/08/wUhMmipO/F4+O1T6SdGraTUu5qIaCTZy8aukQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDKAiUW8X7LC3homvs/tHzPD7OVE2IE24LCxOFdjV/GRtmRxhZrF35VDzZBjydBd7g==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -410,6 +410,10 @@ namespace TransformersShop.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("OwnerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
@@ -421,6 +425,8 @@ namespace TransformersShop.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OwnerId");
 
                     b.HasIndex("ProductId");
 
@@ -512,6 +518,12 @@ namespace TransformersShop.Migrations
 
             modelBuilder.Entity("TransformersShop.Entity.Rating", b =>
                 {
+                    b.HasOne("TransformersShop.Entity.ApplicationUser", "Owner")
+                        .WithMany()
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.HasOne("TransformersShop.Entity.Product", "Product")
                         .WithMany("Ratings")
                         .HasForeignKey("ProductId")
@@ -521,8 +533,10 @@ namespace TransformersShop.Migrations
                     b.HasOne("TransformersShop.Entity.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.Navigation("Owner");
 
                     b.Navigation("Product");
 

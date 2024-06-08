@@ -129,7 +129,7 @@ namespace TransformersShop.Controllers
             _context.Carts.Add(cartItem);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Details", new { id = productId });
+            return RedirectToAction("Index", "Cart");
         }
     }
 }

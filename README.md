@@ -15,4 +15,6 @@ Here in the project we will make a shop based on the idea of selling Transformer
    
     6.2 Restock Panel
 7. Added Category for the Products
+8. Added Unit testing
+9. Added Rating and Comments
 
