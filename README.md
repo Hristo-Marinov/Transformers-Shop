@@ -18,3 +18,27 @@ Here in the project we will make a shop based on the idea of selling Transformer
 8. Added Unit testing
 9. Added Rating and Comments
 
+## Prerequisites
+
+Before running the project, ensure you have the following installed:
+
+1. [.NET SDK 6.0](https://dotnet.microsoft.com/download/dotnet/6.0)
+2. [SQL Server or SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+3. [Visual Studio 2022 or later](https://visualstudio.microsoft.com/downloads/)
+4. [Node.js (for frontend package management, if required)](https://nodejs.org/)
+
+## Setup Instructions
+
+1. Clone the Repository
+2. Install Install Dependencies
+
+    2.1 Restore NuGet Packages
+
+    2.2 Restore Node.js Packages
+3. Configure the Database
+
+    3.1 Update Connection String
+
+    3.2 Apply Migration 
+4. Run the Application
+
