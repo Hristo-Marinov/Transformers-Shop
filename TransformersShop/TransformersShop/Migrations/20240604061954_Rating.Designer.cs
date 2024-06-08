@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TransformersShop.Entity;
 
@@ -11,9 +12,10 @@ using TransformersShop.Entity;
 namespace TransformersShop.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240604061954_Rating")]
+    partial class Rating
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,7 +54,7 @@ namespace TransformersShop.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "83268ed9-53aa-492a-9fe0-5dcec60f8868",
+                            ConcurrencyStamp = "6804db9c-7452-470f-8c87-1b40d2bc48a1",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -243,14 +245,14 @@ namespace TransformersShop.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bd5fedf4-e54c-4643-969c-c4c1279ff1f1",
+                            ConcurrencyStamp = "98c72cb0-ced0-4259-9210-0e0cc52efbee",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             IsAdmin = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKXx/zxDssTF7zYBuv4NHTlQ0/08/wUhMmipO/F4+O1T6SdGraTUu5qIaCTZy8aukQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENtEG3YFtRZzu4zsXvrNhzpVgiZnqU/5EqmZsBv3VBEgbPcKobw9X5XHEw2RaWTJdg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -513,7 +515,7 @@ namespace TransformersShop.Migrations
             modelBuilder.Entity("TransformersShop.Entity.Rating", b =>
                 {
                     b.HasOne("TransformersShop.Entity.Product", "Product")
-                        .WithMany("Ratings")
+                        .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -537,11 +539,6 @@ namespace TransformersShop.Migrations
             modelBuilder.Entity("TransformersShop.Entity.Category", b =>
                 {
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("TransformersShop.Entity.Product", b =>
-                {
-                    b.Navigation("Ratings");
                 });
 #pragma warning restore 612, 618
         }

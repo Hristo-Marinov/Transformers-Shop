@@ -6,7 +6,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using TransformersShop.Entity;
 using TransformersShop.Models;
-using TransformersShop.Models;
 
 namespace TransformersShop.Controllers
 {

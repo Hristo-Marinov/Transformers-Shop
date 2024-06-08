@@ -1,21 +1,21 @@
-﻿@model ProductViewModel
+﻿@model TransformersShop.Models.ProductViewModel
 
 @{
-    ViewBag.Title = "Product Details";
+    ViewBag.Title = Model.Name;
 }
 
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <img src="@Model.Picture" class="img-fluid" alt="@Model.Name">
-        </div>
-        <div class="col-md-6">
-            <h1>@Model.Name</h1>
-            <p>@Model.Description</p>
-            <p>Type @Model.CategoryName</p>
-            <p>Stock: @Model.StockCount</p>
+            <img src="@Model.Picture" class="img-fluid" alt="@Model.Name" />
+            <div class="col-ml-6">
+                <h2>@Model.Name</h2>
+                <p>@Model.Description</p>
+                <p>Category: @Model.CategoryName</p>
+                <p>Stock Count: @Model.StockCount</p>
+            </div>
             <p>
-                Rating:
+                Average Rating:
                 @for (int i = 0; i < 5; i++)
                 {
                     if (i < Model.Rating)
@@ -27,16 +27,52 @@
                         <span class="fa fa-star"></span>
                     }
                 }
+                (@Model.Rating)
             </p>
-            <form asp-action="AddToCart" asp-controller="Cart" method="post">
+
+            <h3>Ratings</h3>
+            <div>
+                @foreach (var rating in Model.Ratings)
+                {
+                    <div class="rating">
+                        <p>
+                            @for (int i = 0; i < 5; i++)
+                            {
+                                if (i < rating.Stars)
+                                {
+                                    <span class="fa fa-star checked"></span>
+                                }
+                                else
+                                {
+                                    <span class="fa fa-star"></span>
+                                }
+                            }
+                            - @rating.Comment
+                        </p>
+                        <p>by @rating.UserName on @rating.Date.ToShortDateString()</p>
+                    </div>
+                }
+            </div>
+
+            <h3>Leave a Rating</h3>
+            <form asp-action="SubmitRating" method="post">
                 <input type="hidden" name="productId" value="@Model.Id" />
                 <div class="form-group">
-                    <label for="quantity">Quantity</label>
-                    <input type="number" name="quantity" value="1" min="1" class="form-control" />
+                    <label for="stars">Stars</label>
+                    <select id="stars" name="stars" class="form-control" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
                 </div>
-                <button type="submit" class="btn btn-primary">Add to Cart</button>
+                <div class="form-group">
+                    <label for="comment">Comment</label>
+                    <textarea id="comment" name="comment" class="form-control" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-            <a href="@Url.Action("ProductList", "Products")" class="btn btn-secondary mt-2">Back to List</a>
         </div>
     </div>
 </div>

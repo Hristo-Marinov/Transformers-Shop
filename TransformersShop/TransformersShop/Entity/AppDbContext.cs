@@ -11,6 +11,7 @@ namespace TransformersShop.Entity
         public DbSet<Product> Products { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
@@ -34,6 +35,22 @@ namespace TransformersShop.Entity
                 entity.Property(e => e.Name)
                       .IsRequired()
                       .HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<Rating>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Stars)
+                      .IsRequired();
+                entity.Property(e => e.Comment)
+                      .HasMaxLength(1000);
+                entity.Property(e => e.Date)
+                      .IsRequired();
+
+                entity.HasOne(e => e.User)
+                      .WithMany()
+                      .HasForeignKey(e => e.UserId)
+                      .OnDelete(DeleteBehavior.Cascade);
             });
 
             SeedAdminUser(modelBuilder);

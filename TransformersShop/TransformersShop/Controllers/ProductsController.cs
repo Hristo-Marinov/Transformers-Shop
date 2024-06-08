@@ -1,14 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using TransformersShop.Entity;
+using TransformersShop.Models;
 
-namespace TransformersShop.Controllers
+namespace Tra.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using TransformersShop.Entity;
-    using TransformersShop.Models;
-
     public class ProductsController : Controller
     {
         private readonly AppDbContext _context;
@@ -52,26 +52,60 @@ namespace TransformersShop.Controllers
         public async Task<IActionResult> Details(int id)
         {
             var product = await _context.Products
-                .Where(p => p.Id == id)
-                .Select(p => new ProductViewModel
-                {
-                    Id = p.Id,
-                    Name = p.Name,
-                    Picture = p.Picture,
-                    Description = p.Description,
-                    StockCount = p.StockCount,
-                    Rating = 5,
-                    CategoryName = p.Category.Name
-                })
-                .FirstOrDefaultAsync();
+                .Include(p => p.Category)
+                .Include(p => p.Ratings)
+                .ThenInclude(r => r.User)
+                .FirstOrDefaultAsync(p => p.Id == id);
 
             if (product == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            var productViewModel = new ProductViewModel
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Picture = product.Picture,
+                Description = product.Description,
+                StockCount = product.StockCount,
+                CategoryName = product.Category.Name,
+                Ratings = product.Ratings.Select(r => new RatingViewModel
+                {
+                    Stars = r.Stars,
+                    Comment = r.Comment,
+                    UserName = r.User.UserName,
+                    Date = r.Date
+                }).ToList(),
+                Rating = product.Ratings.Any() ? (int)product.Ratings.Average(r => r.Stars) : 0
+            };
+
+            return View(productViewModel);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> SubmitRating(int productId, int stars, string comment)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == User.Identity.Name);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+
+            var rating = new Rating
+            {
+                ProductId = productId,
+                UserId = user.Id,
+                Stars = stars,
+                Comment = comment,
+                Date = DateTime.Now
+            };
+
+            _context.Ratings.Add(rating);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Details", new { id = productId });
         }
     }
-
 }
