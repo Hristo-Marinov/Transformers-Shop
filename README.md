@@ -17,6 +17,8 @@ Here in the project we will make a shop based on the idea of selling Transformer
 7. Added Category for the Products
 8. Added Unit testing
 9. Added Rating and Comments
+10. Added Custom Login/Register
+11. Added Custom Error Page
 
 ## Prerequisites
 
