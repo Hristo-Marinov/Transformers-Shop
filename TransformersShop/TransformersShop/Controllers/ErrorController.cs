@@ -19,19 +19,19 @@ namespace TransformersShop.Controllers
             return View("Error");
         }
 
-        [Route("Error/{statusCode}")]
+        [Route("Error")]
+        public IActionResult Error()
+        {
+            ViewBag.StatusCode = 500;
+            ViewBag.ErrorMessage = "An unexpected error occurred. Please try again later.";
+            return View("Error");
+        }
+
+        [Route("Error/AccessDenied")]
         public IActionResult AccessDenied()
         {
             ViewBag.StatusCode = 403;
             ViewBag.ErrorMessage = "You do not have permission to access this resource.";
-            return View("Error");
-        }
-
-        [Route("Error")]
-        public IActionResult Error()
-        {
-            //ViewBag.StatusCode = 500;
-            ViewBag.ErrorMessage = "An unexpected error occurred. Please try again later.";
             return View("Error");
         }
     }

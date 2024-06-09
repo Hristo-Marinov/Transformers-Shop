@@ -27,7 +27,7 @@ namespace TransformersShop.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel {Message = "Error"});
+            return View(new ErrorViewModel {ExceptionMessage = "Error"});
         }
     }
 }

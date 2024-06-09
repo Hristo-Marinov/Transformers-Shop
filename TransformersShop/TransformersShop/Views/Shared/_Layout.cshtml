@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TransformersShop.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM9X2K5Lk9MEvTgE3ImapT+6l9cbl5AN5s2hFg" crossorigin="anonymous" />
 </head>
 <body>
     <header>
@@ -28,7 +29,7 @@
                         <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="ProductList">Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">About Us</a>
                     </li>
                     @if(User.IsInRole("Admin")){
                         <li class="nav-item">
@@ -40,7 +41,7 @@
                     @if (isAuthenticated)
                     {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">Cart</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">&#x1F6D2; Cart</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>

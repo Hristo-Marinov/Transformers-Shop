@@ -4,7 +4,6 @@ using TransformersShop.Entity;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -32,7 +31,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.Cookie.HttpOnly = true;
     options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
     options.LoginPath = "/Account/Login";
-    options.AccessDeniedPath = "/Error";
+    options.AccessDeniedPath = "/Error/AccessDenied";
     options.SlidingExpiration = true;
 });
 

@@ -57,9 +57,13 @@ namespace TransformersShop.Controllers
                 .ThenInclude(r => r.User)
                 .FirstOrDefaultAsync(p => p.Id == id);
 
+            var lastProduct = await _context.Products
+                .OrderByDescending(p => p.Id)
+                .FirstOrDefaultAsync();
+
             if (product == null)
             {
-                return NotFound();
+                return RedirectToAction("HttpStatusCodeHandler", "Error", new { statusCode = 404 });
             }
 
             var productViewModel = new ProductViewModel

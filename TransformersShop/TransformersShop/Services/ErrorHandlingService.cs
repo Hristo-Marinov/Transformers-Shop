@@ -9,7 +9,7 @@ namespace TransformersShop.Services
         {
             var errorViewModel = new ErrorViewModel
             {
-                Message = message
+                ExceptionMessage = message
             };
             return new ViewResult
             {
