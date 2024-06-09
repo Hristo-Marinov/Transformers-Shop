@@ -1,6 +1,6 @@
 # TransformersShop
 ## An ASP app for Transformers Shop
-![download (2)](https://github.com/Hristo-Marinov/Transformers-Shop/assets/129615640/2d782c4b-2a29-4899-a898-1e522ebd8ccb)
+![download (2)](https://github.com/Hristo-Marinov/Transformers-Shop/assets/129615640/2d782c4b-2a29-4899-a898-1e522ebd8ccb) ![beeb](https://github.com/Hristo-Marinov/Transformers-Shop/assets/129615640/1465c825-632b-4be2-8a86-903a0d4bfac5)
 
 Here in the project we will make a shop based on the idea of selling Transformers
 ## Progress
@@ -19,6 +19,8 @@ Here in the project we will make a shop based on the idea of selling Transformer
 9. Added Rating and Comments
 10. Added Custom Login/Register
 11. Added Custom Error Page
+12. Added About Us Page
+13. Better Products
 
 ## Prerequisites
 
