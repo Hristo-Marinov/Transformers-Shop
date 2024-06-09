@@ -10,7 +10,6 @@
             <img src="@Model.Picture" class="card-img-top" alt="@Model.Name">
             <div class="card-body">
                 <h5 class="card-title">@Model.Name</h5>
-                <p class="card-text">@Model.Description</p>
                 <p class="card-text"><strong>Stock Count:</strong> @Model.StockCount</p>
                 <p class="card-text"><strong>Category:</strong> @Model.CategoryName</p>
                 <p>
@@ -28,6 +27,13 @@
         </div>
     </div>
 </div>
+
+<h3>Description</h3>
+<div class="row justify-content-center">
+    <p class="card-text">@Model.Description</p>
+</div>
+
+<h3></h3>
 
 <h3>Ratings</h3>
 <div>

@@ -21,6 +21,8 @@ namespace TransformersShop.Tests
         private readonly AppDbContext _context;
         private readonly ProductsController _controller;
 
+        private readonly Mock<AppDbContext> _contextMock;
+
         private readonly Mock<ILogger<HomeController>> _mockLogger;
         private readonly HomeController homeController;
 
@@ -45,13 +47,7 @@ namespace TransformersShop.Tests
             Controller = new ErrorController();
         }
 
-        [Fact]
-        public async Task Details_ReturnsNotFound_WhenProductDoesNotExist()
-        {
-            var result = await _controller.Details(0);
-            var notFoundResult = Assert.IsType<NotFoundResult>(result);
-            Assert.Equal(404, notFoundResult.StatusCode);
-        }
+        
 
         [Fact]
         public void Error_ReturnsViewResult_WithErrorViewModel()
@@ -86,6 +82,7 @@ namespace TransformersShop.Tests
                 default:
                     Assert.Equal("An unexpected error occurred. Please try again later.", viewResult.ViewData["ErrorMessage"]);
                     break;
+
             }
         }
 

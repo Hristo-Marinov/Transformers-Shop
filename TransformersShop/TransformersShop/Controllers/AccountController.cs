@@ -38,8 +38,13 @@ namespace TransformersShop.Controllers
 
                 foreach (var error in result.Errors)
                 {
+                    //TempData["No"] = "Not valid!";
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
+            }
+            else
+            {
+                TempData["No"] = "Not valid!";
             }
 
             return View(model);
@@ -61,6 +66,10 @@ namespace TransformersShop.Controllers
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    TempData["No"] = "Not valid!";
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TransformersShop.Entity;
 
@@ -11,9 +12,10 @@ using TransformersShop.Entity;
 namespace TransformersShop.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240609185243_BetterProducts")]
+    partial class BetterProducts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,7 +54,7 @@ namespace TransformersShop.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "a00c801d-a30a-4058-a040-0ae1add409f8",
+                            ConcurrencyStamp = "5c798e15-0405-4089-af5d-c4888ab16796",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -243,14 +245,14 @@ namespace TransformersShop.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e23e2b34-4c54-467f-9df8-e232449d19d6",
+                            ConcurrencyStamp = "acab9182-1db7-494d-99ab-8653d8d547b1",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             IsAdmin = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHxCHLMBMw9Sj7mCzeI3WZJa4517bblY8EvjIg4yUatkkAQFmzXXy4O7BRf1Ik+LJA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAPNNmEjkbiVg02oVUUdal8ur/3lLoaglnhx+khWrkqDQHbyfrZO/A+Yjq41QHzdOA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -380,7 +382,7 @@ namespace TransformersShop.Migrations
                             CategoryId = 2,
                             Description = "Megatron is the ruthless and powerful leader of the Decepticons, the main antagonists of the Transformers universe. He transforms into various forms depending on the adaptation, including a Walther P38 pistol, a tank, or a Cybertronian jet. Megatron's primary goal is to conquer Cybertron and, eventually, the universe, believing that peace can only be achieved through tyranny. He is a formidable combatant with immense strength, advanced weaponry, and a keen tactical mind. Megatron's leadership is marked by fear and oppression, making him a formidable foe to Optimus Prime and the Autobots.",
                             Name = "Megatron",
-                            Picture = "https://wallpapercave.com/wp/wp3466402.jpg",
+                            Picture = "https://i.pinimg.com/736x/3e/87/a1/3e87a13aedb09fcaac9ce75b5ad93d27.jpg",
                             StockCount = 10
                         },
                         new
